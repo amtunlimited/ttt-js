@@ -51,22 +51,22 @@ function TTT() {
    * less typing for me
    *
    * note: Let's get this out of the way now: I know that one letter variable 
-   * names are a sin against Knuth, but there's a lot of repetitive boiler plate
-   * to describe very simple things and it will drive me crazy. I'll write 
-   * comments, I promise.
+   * names are a sin against God and Knuth, but there's a lot of repetitive 
+   * boiler plate to describe very simple things and it will drive me crazy. 
+   * I'll write comments, I promise.
    */
   this.winAt = (c, p) => {
     b = this.bCopy();
     x = c.x;
     y = c.y
-    // Do we reeeeeeeally need to  this is a valid move?
+    // Do we reeeeeeeally need to check that this is a valid move?
     // ...nah
     b[x][y] = p;
 
     return  equal_p([b[x][0], b[x][1], b[x][2]], p) || // row
-	    equal_p([b[0][y], b[1][y], b[2][y]], p) || // column
-	    equal_p([b[0][0], b[1][1], b[2][2]], p) || // diagonal 1 (x==y)
-	    equal_p([b[0][2], b[1][1], b[0][2]], p)    // diagonal 2 (x+y==2)
+            equal_p([b[0][y], b[1][y], b[2][y]], p) || // column
+            equal_p([b[0][0], b[1][1], b[2][2]], p) || // diagonal 1 (x==y)
+            equal_p([b[0][2], b[1][1], b[0][2]], p)    // diagonal 2 (x+y==2)
   };
 
   /* This is "immutable" part. Instead of editing the object, a copy of the 

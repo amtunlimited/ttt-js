@@ -1,4 +1,9 @@
-/** minimax: recusively pick the best score for the player, assuming that the
+/* This file stores everything to do with the ttt AI. Ideally, the only thing 
+ * called externally will be `best_move`, where you feed in a board and player
+ * and you get back the position of the...best move (roll credits)
+ */
+
+/* minimax: recusively pick the best score for the player, assuming that the
  * opponent is doing the same
  *
  * board: a TTT instance
@@ -52,7 +57,8 @@ function empty_scores(board, player) {
 /* best_move: takes empty_scores and picks the best move from the highest score
  *
  * As stated above, these could easily be one function without any real added
- * confusion, this just makes things easier to debug
+ * confusion (and would definitely be more efficient), this just makes things 
+ * easier to debug.
  */
 function best_move(board, player) {
   return empty_scores(board, player)
