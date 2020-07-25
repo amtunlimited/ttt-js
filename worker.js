@@ -4,7 +4,7 @@
  * board: a TTT instance
  * player: either 1 or -1
  */
-minimax(board, player) {
+function minimax(board, player) {
   empties = board.empty();
   
   // Full board means a draw
@@ -14,7 +14,7 @@ minimax(board, player) {
   continues = [];
 
   for(move of empties) {
-    if(board.winAt(move, player)
+    if(board.winAt(move, player))
       return player;
     else
       continues.push(move);
@@ -34,8 +34,28 @@ minimax(board, player) {
   return top_score * player;
 }
 
-/* empty_scores: for a board and player, return a list of {board, score}
- * objects for each empty spot.
+/* empty_scores: for a board and player, return a list of {move, score} objects
+ * for each empty spot.
  *
  * Doesn't *really* need to be it's own function, but helpful for REPL testing
  */
+function empty_scores(board, player) {
+  return board.empty().map(move => {
+    score = board.winAt(move, player) ? 
+      player : 
+      minimax(board.insert(move, player), player * -1);
+    
+    return {move: move, score: score}
+  });
+}
+
+/* best_move: takes empty_scores and picks the best move from the highest score
+ *
+ * As stated above, these could easily be one function without any real added
+ * confusion, this just makes things easier to debug
+ */
+function best_move(board, player) {
+  return empty_scores(board, player)
+          .reduce((a,b) => (a.score>b.score) ? a : b)
+          .move
+}

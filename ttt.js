@@ -21,6 +21,8 @@ function Pos(x,y) {
   this.y = y;
 }
 
+equal_p = (list, p) => list.every(a => a == p)
+
 function TTT() {
   this.board = [
     [0,0,0],
@@ -53,10 +55,10 @@ function TTT() {
     // ...nah
     b[x][y] = p;
 
-    return b[x][0] == b[x][1] == b[x][2] == p || // row
-           b[0][y] == b[1][y] == b[2][y] == p || // column
-           b[0][0] == b[1][1] == b[2][2] == p || // diagonal 1 (x==y)
-           b[0][2] == b[1][1] == b[0][2] == p;   // diagonal 2 (x+y==2)
+    return  equal_p([b[x][0], b[x][1], b[x][2]], p) || // row
+	    equal_p([b[0][y], b[1][y], b[2][y]], p) || // column
+	    equal_p([b[0][0], b[1][1], b[2][2]], p) || // diagonal 1 (x==y)
+	    equal_p([b[0][2], b[1][1], b[0][2]], p)    // diagonal 2 (x+y==2)
   };
 
   this.insert = (c, p) => {
