@@ -12,8 +12,7 @@ function numToPiece(n) {
     case -1:
       return 'O';
     case 0:
-      // TODO: turn this into a space after testing
-      return '*';
+      return ' ';
     case 1:
       return 'X';
   }
@@ -53,16 +52,22 @@ function clicked(p) {
   board = board.insert(best_move(board, -1), -1);
 }
 
-// function clickedCallback(x,y,DOMBoard)
-
 // Initialize the state, interface, and events
 function setup() {
-  DOMBoard = document.createElement('table');
-  DOMBoard.style.fontFamily = 'Sans-Serif';
+  DOMBoard  = document.createElement('table');
+  DOMBoard.style.borderCollapse = 'collapse';
+  DOMBoard.style.borderStyle = 'hidden'; 
+  DOMBoard.style.textAlign = 'center';
+  DOMBoard.style.fontSize = '90px';
+  DOMBoard.style.fontFamily = 'sans-serif';
+
   for(let y of [0,1,2]) {
     row = DOMBoard.insertRow();
     for(let x of [0,1,2]) {
       cell = row.insertCell();
+      cell.style.border = '1px solid black';
+      cell.style.width = '100px';
+      cell.style.height = '100px';
       cell.appendChild(document.createTextNode(" "));
       cell.onclick = (e) => {
         clicked(new Pos(x,y));
