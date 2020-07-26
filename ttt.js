@@ -66,7 +66,7 @@ function TTT() {
     return  equal_p([b[x][0], b[x][1], b[x][2]], p) || // row
             equal_p([b[0][y], b[1][y], b[2][y]], p) || // column
             equal_p([b[0][0], b[1][1], b[2][2]], p) || // diagonal 1 (x==y)
-            equal_p([b[0][2], b[1][1], b[0][2]], p)    // diagonal 2 (x+y==2)
+            equal_p([b[0][2], b[1][1], b[2][0]], p)    // diagonal 2 (x+y==2)
   };
 
   /* This is "immutable" part. Instead of editing the object, a copy of the 
