@@ -47,8 +47,8 @@ function minimax(board, player) {
 function empty_scores(board, player) {
   return board.empty().map(move => {
     score = board.winAt(move, player) ? 
-      player * 10 : //Prioritize instant wins
-      minimax(board.insert(move, player), player * -1);
+	    player * 10 : //Prioritize instant wins
+	    minimax(board.insert(move, player), player * -1);
 
     return {move: move, score: score}
   });
