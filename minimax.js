@@ -25,7 +25,7 @@ function minimax(board, player) {
       continues.push(move);
   }
 
-  top_score = -Infinity;
+  top_score = Infinity;
   for(move of continues) {
     score = minimax(board.insert(move), player * -1)
     // Here's the main hack: because one player's scores are the "opposite"
@@ -33,7 +33,7 @@ function minimax(board, player) {
     // and the opponent's scores will swap.
     //
     // Just remember to multiply it back before returning...
-    top_score = Math.max(top_score, score * player);
+    top_score = Math.min(top_score, score * player);
   }
 
   return top_score * player;

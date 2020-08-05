@@ -43,12 +43,10 @@ function updateBoard(DOMBoard) {
 function clicked(p) {
   x = p.x;
   y = p.y;
-  console.log(p);
   if(board.board[x][y] != 0)
     return;
 
   board = board.insert(new Pos(x,y), 1);
-  console.log(best_move(board, -1))
   board = board.insert(best_move(board, -1), -1);
 }
 
